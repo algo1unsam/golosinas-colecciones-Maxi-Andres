@@ -1,5 +1,8 @@
 import golosinas.*
 
+
+describe "golosinas" {
+
 test "bombon" {
     assert.equals(15, bombon.peso())
     assert.equals(5, bombon.precio())
@@ -111,6 +114,9 @@ test "golosina bañada chupetin" {
     //assert.equals(9.9, golosinaBaniada.peso()) // 10% mordida 2 bañado
     //NO ME DA ESTO
 }
+}
+
+describe "mario parte 2" {
 
 test "mariano compra golosinas" {
     chocolatin.asignarPeso(50)
@@ -184,4 +190,27 @@ test "mariano verifica gustos faltantes" {
     mariano.comprar(caramelo) // sabor: "frutilla"
     mariano.comprar(chupetin) // sabor: "naranja"
     assert.equals(#{"vainilla"}, mariano.gustosFaltantes(#{"frutilla", "chocolate", "vainilla"}))
+}
+
+}
+
+describe "mario parte 3" {
+
+test "mariano puede comprar golosinas del mismo tipo" {
+    mariano.comprar(bombon)
+    mariano.comprar(bombon)
+    assert.equals([bombon, bombon], mariano.bolsa())
+}
+
+test "bañar golosina" {
+    mariano.baniar(bombon)
+    assert.equals([golosinaBaniada], mariano.bolsa())
+    assert.equals(golosinaBaniada.golobase(), bombon)
+    mariano.baniar(chupetin)
+    assert.equals([golosinaBaniada, golosinaBaniada], mariano.bolsa())
+    assert.equals(golosinaBaniada.golobase(), chupetin)
+}
+
+
+
 }

@@ -1,14 +1,27 @@
-object bombon {
-    var property precio = 5
-    var property sabor = "frutilla"
-    var property peso = 15
-    var property gluten = false
-    
+class Golosina {
+    var property precio //precio = 0 se le puede dar un valor si queres
+    var property sabor
+    var property peso
+    var property gluten
+
     method mordisco() {
         peso = (peso * 0.8) -1
     }
+}
+
+object bombon inherits Golosina(precio = 5, sabor = "frutilla", peso = 15, gluten = false) { //prueba de clases
 
 }
+// object bombon {
+    // var property precio = 5
+    // var property sabor = "frutilla"
+    // var property peso = 15
+    // var property gluten = false
+    
+    // method mordisco() {
+        // peso = (peso * 0.8) -1
+    // }
+// }
 
 object alfajor {
     var property precio = 12
@@ -162,7 +175,7 @@ object mariano {
         return bolsa.filter{a => a.sabor() == unSabor}
     }
     method sabores() {
-        var saboresSet = #{}
+        const saboresSet = #{}
         bolsa.forEach{a => saboresSet.add(a.sabor())}
         return saboresSet
     }
@@ -178,9 +191,17 @@ object mariano {
     } //filtra los valores(objetos) de golosinasDeseadas que la bolsa No contenga
 //agarra los de golosinasDeseadas que no esten en bolsa
     method gustosFaltantes(gustosDeseados) {
-        var gustosCubiertos = #{}
+        const gustosCubiertos = #{}
         bolsa.forEach{a => gustosCubiertos.add(a.sabor())}
         return gustosDeseados.filter{a => !gustosCubiertos.contains(a)}
     }// se fija en la bolsa los gustos que tiene cada objeto y los pone en un set
     // se fija los gustosDeseados con los gustos cubiertos Y devuelve los gustosDeseados que no estan en gustosCubiertos
+
+    //* parte 3
+    method baniar(unaGolosina) {
+        golosinaBaniada.asignarBase(unaGolosina)
+        self.comprar(golosinaBaniada)
+    }
+
+
 }
